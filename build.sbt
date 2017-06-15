@@ -14,6 +14,11 @@ lazy val shared = (crossProject.crossType(CrossType.Pure) in file("shared"))
   // set up settings specific to the JS project
   .jsConfigure(_ enablePlugins ScalaJSWeb)
 
+lazy val sharedJVM = shared.jvm.settings(name := "sharedJVM")
+
+lazy val sharedJS = shared.js.settings(name := "sharedJS")
+
+
 lazy val server = project.settings(
   scalaJSProjects := Seq(client),
   pipelineStages in Assets := Seq(scalaJSPipeline)

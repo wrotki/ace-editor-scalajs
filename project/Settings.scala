@@ -17,8 +17,9 @@ object Settings {
     * the special %%% function selects the correct version for each project
     */
   val sharedDependencies = Def.setting(Seq(
-    "com.lihaoyi" %%% "autowire" % versions.autowire,
-    "me.chrons" %%% "boopickle" % versions.booPickle
+    // Uncomment below when Scala 2.12 versions are available
+//    "com.lihaoyi" %%% "autowire" % versions.autowire,
+//    "me.chrons" %%% "boopickle" % versions.booPickle
   ))
 
 }
