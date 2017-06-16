@@ -7,7 +7,8 @@ import org.scalajs.sbtplugin.ScalaJSPlugin.autoImport._
 object Settings {
 
   object versions {
-    val scala = "2.12.1"
+    //val scala = "2.12.1"
+    val scala = "2.11.11"
     val autowire = "0.2.5"
     val booPickle = "1.2.5"
   }
@@ -18,8 +19,8 @@ object Settings {
     */
   val sharedDependencies = Def.setting(Seq(
     // Uncomment below when Scala 2.12 versions are available
-//    "com.lihaoyi" %%% "autowire" % versions.autowire,
-//    "me.chrons" %%% "boopickle" % versions.booPickle
+    "com.lihaoyi" %%% "autowire" % versions.autowire,
+    "me.chrons" %%% "boopickle" % versions.booPickle
   ))
 
 }
