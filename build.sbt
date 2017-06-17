@@ -23,7 +23,8 @@ lazy val sharedJS = shared.js.settings(name := "sharedJS")
 
 lazy val server = (project in file("server")).settings(
   scalaVersion := Settings.versions.scala,
-  scalaJSProjects := Seq(client),
+  libraryDependencies ++= Settings.jvmDependencies.value,
+    scalaJSProjects := Seq(client),
   pipelineStages in Assets := Seq(scalaJSPipeline)
 )
   .enablePlugins(SbtWeb)
