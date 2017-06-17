@@ -25,7 +25,10 @@ lazy val server = (project in file("server")).settings(
   scalaVersion := Settings.versions.scala,
   libraryDependencies ++= Settings.jvmDependencies.value,
     scalaJSProjects := Seq(client),
-  pipelineStages in Assets := Seq(scalaJSPipeline)
+  pipelineStages in Assets := Seq(scalaJSPipeline),
+  pipelineStages := Seq(digest, gzip),
+  // compress CSS
+  LessKeys.compress in Assets := true
 )
   .enablePlugins(SbtWeb)
   .enablePlugins(PlayScala)

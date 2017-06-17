@@ -15,5 +15,10 @@ addSbtPlugin("com.typesafe.sbt" % "sbt-less" % "1.0.6")
 // https://index.scala-lang.org/playframework/playframework/sbt-plugin/2.5.13
 addSbtPlugin("com.typesafe.play" % "sbt-plugin" % "2.5.13")
 
+addSbtPlugin("com.typesafe.sbt" % "sbt-digest" % "1.1.0")
+
+addSbtPlugin("com.typesafe.sbt" % "sbt-gzip" % "1.0.0")
+
+
 
 
