@@ -16,8 +16,10 @@
         </div>
         <div id="editor">
         </div>
-        @scalajs.html.scripts(projectName = "client", name => _asset(name).toString, name => getClass.getResource(s"/public/$name") != null)
-    <h1>Boo1</h1>
+        @scalajs.html.scripts(projectName = "client",
+        name => routes.Assets.versioned(name).toString,
+        name => getClass.getResource(s"/public/$name") != null)
+        <h1>Boo1</h1>
     <h2>Boo2</h2>
     <h3>Boo3</h3>
     <h4>Boo4</h4>
