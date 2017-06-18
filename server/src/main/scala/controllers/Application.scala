@@ -20,7 +20,16 @@ class Application @Inject() (implicit val config: Configuration, env: Environmen
 //  val apiService = new ApiService()
 
   def index = Action {
-    Ok(views.html.index("SPA Boilerplate"))
+    val scriptUrl = bundleUrl("client")
+    Ok(views.html.index("SPA Boilerplate",scriptUrl))
+  }
+
+  // https://github.com/scalacenter/scalajs-bundler/blob/master/sbt-web-scalajs-bundler/src/sbt-test/sbt-web-scalajs-bundler/play/server/src/main/scala/example/ExampleController.scala#L25-L30
+  def bundleUrl(projectName: String): Option[String] = {
+    val name = projectName.toLowerCase
+    Seq(s"$name-opt-bundle.js", s"$name-fastopt-bundle.js")
+      .find(name => getClass.getResource(s"/public/$name") != null)
+      .map(controllers.routes.Assets.versioned(_).url)
   }
 
 //  def autowireApi(path: String) = Action.async(parse.raw) {

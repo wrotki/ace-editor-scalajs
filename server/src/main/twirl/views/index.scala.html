@@ -1,4 +1,4 @@
-@(title: String)(implicit config: play.api.Configuration, env: play.api.Environment)
+@(title: String, scriptUrl: Option[String])(implicit config: play.api.Configuration, env: play.api.Environment)
 @import views.html.tags._
 
 <!DOCTYPE html>
@@ -16,9 +16,7 @@
         </div>
         <div id="editor">
         </div>
-        @scalajs.html.scripts(projectName = "client",
-        name => routes.Assets.versioned(name).toString,
-        name => getClass.getResource(s"/public/$name") != null)
+        <script src="@scriptUrl"></script>
         <h1>Boo1</h1>
     <h2>Boo2</h2>
     <h3>Boo3</h3>
