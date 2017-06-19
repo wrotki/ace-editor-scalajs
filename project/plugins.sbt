@@ -4,6 +4,7 @@
 
 // SERVER
 // https://index.scala-lang.org/playframework/playframework/sbt-plugin/2.5.13
+
 addSbtPlugin("com.typesafe.play" % "sbt-plugin" % "2.5.13")
 
 addSbtPlugin("com.typesafe.sbt" % "sbt-digest" % "1.1.1")
@@ -16,7 +17,7 @@ addSbtPlugin("com.typesafe.sbt" % "sbt-gzip" % "1.0.0")
 
 addSbtPlugin("org.scala-js" % "sbt-scalajs" % "0.6.17")
 
-// addSbtPlugin("com.typesafe.sbt" % "sbt-less" % "1.0.6")
+//addSbtPlugin("com.typesafe.sbt" % "sbt-less" % "1.0.6")
 
 addSbtPlugin("ch.epfl.scala" % "sbt-scalajs-bundler" % "0.6.0")
 

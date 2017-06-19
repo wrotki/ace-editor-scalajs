@@ -11,10 +11,10 @@ object SPAMain extends js.JSApp {
 
   @JSExport
   def main(): Unit = {
-    log.warn("Application starting")
+    //log.warn("Application starting")
     // send log messages also to the server
-    log.enableServerLogging("/logging")
-    log.info("This message goes to server as well")
+    //log.enableServerLogging("/logging")
+    //log.info("This message goes to server as well")
 
     // create stylesheet
     //GlobalStyles.addToDocument()

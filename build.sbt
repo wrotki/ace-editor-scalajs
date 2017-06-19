@@ -29,17 +29,20 @@ lazy val sharedJS = shared.js.settings(name := "sharedJS")
 
 // lazy val client = project.enablePlugins(ScalaJSPlugin, ScalaJSWeb, ScalaJSBundlerPlugin)
 lazy val client = project
-  .enablePlugins(ScalaJSBundlerPlugin, ScalaJSWeb)
-  .settings(
-  name := "client",
-  version := Settings.version,
-  scalaVersion := Settings.versions.scala,
-  scalacOptions ++= Settings.scalacOptions,
-  libraryDependencies ++= Settings.scalajsDependencies.value,
-  libraryDependencies ++= Settings.jsDependencies.value,
-  useYarn := true,
-  npmDependencies in Compile ++= Settings.npmDependencies
-)
+    .enablePlugins(ScalaJSBundlerPlugin, ScalaJSWeb)
+    .settings(
+    name := "client",
+    version := Settings.version,
+    scalaVersion := Settings.versions.scala,
+    scalacOptions ++= Settings.scalacOptions,
+    libraryDependencies ++= Settings.scalajsDependencies.value,
+    libraryDependencies ++= Settings.jsDependencies.value,
+    useYarn := true,
+    npmDependencies in Compile ++= Settings.npmDependencies,
+    // Use a different Webpack configuration file for production
+    webpackConfigFile in fastOptJS := Some(baseDirectory.value / "my.custom.webpack.config.js"),
+      enableReloadWorkflow := true
+  )
 
 lazy val server = (project in file("server"))
   .enablePlugins(PlayScala, WebScalaJSBundlerPlugin)
