@@ -1,6 +1,6 @@
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSExport
-import org.scalajs.dom.document
+import org.scalajs.dom
 import japgolly.scalajs.react._
 import japgolly.scalajs.react.vdom.html_<^._
 
@@ -11,7 +11,7 @@ object SPAMain extends js.JSApp {
 
   @JSExport
   def main(): Unit = {
-    //log.warn("Application starting")
+    log.warn("Application starting")
     // send log messages also to the server
     //log.enableServerLogging("/logging")
     //log.info("This message goes to server as well")
@@ -32,6 +32,6 @@ object SPAMain extends js.JSApp {
 //      NoArgs(),
 //      Hello("John"),
 //      Hello("Jane")))
-    NoArgs().renderIntoDOM(document.body)
+    Hello("You").renderIntoDOM(dom.document.body)
   }
 }

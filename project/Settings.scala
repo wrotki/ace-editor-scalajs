@@ -29,6 +29,8 @@ object Settings {
     val fontAwesome = "4.7.0"
     val scalajsScripts = "1.0.0"
     val react = "15.5.4"
+    val log4javascript = "1.4.15"
+    val mathjs = "3.13.3"
   }
 
   /**
@@ -68,6 +70,8 @@ object Settings {
     "bootstrap" -> versions.bootstrap,
     "font-awesome" -> versions.fontAwesome,
     "react" -> versions.react,
-    "react-dom" -> versions.react
+    "react-dom" -> versions.react,
+    "log4javascript" -> versions.log4javascript,
+    "mathjs" -> versions.mathjs
   )
 }

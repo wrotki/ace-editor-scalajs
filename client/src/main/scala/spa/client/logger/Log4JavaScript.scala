@@ -1,7 +1,8 @@
 package spa.client.logger
 
 import scala.scalajs.js
-import scala.scalajs.js.annotation.JSName
+import scala.scalajs.js.annotation.{JSImport}
+import scala.scalajs.js.annotation.JSImport.Namespace
 
 /**
  * Facade for functions in log4javascript that we need
@@ -48,8 +49,8 @@ private[logger] trait JSLogger extends js.Object {
 @js.native
 private[logger] trait Layout extends js.Object
 
+@JSImport("log4javascript", Namespace)
 @js.native
-@JSName("log4javascript.JsonLayout")
 private[logger] class JsonLayout extends Layout
 
 @js.native
@@ -58,24 +59,32 @@ private[logger] trait Appender extends js.Object {
   def setThreshold(level:Level):Unit = js.native
 }
 
+@JSImport("log4javascript", Namespace)
 @js.native
-@JSName("log4javascript.BrowserConsoleAppender")
 private[logger] class BrowserConsoleAppender extends Appender
 
+@JSImport("log4javascript", Namespace)
 @js.native
-@JSName("log4javascript.PopUpAppender")
 private[logger] class PopUpAppender extends Appender
 
+@JSImport("log4javascript", JSImport.Namespace)
 @js.native
-@JSName("log4javascript.AjaxAppender")
 private[logger] class AjaxAppender(url:String) extends Appender {
   def addHeader(header:String, value:String):Unit = js.native
 }
 
+//@js.annotation.JSGlobalScope
+
 @js.native
-@js.annotation.JSGlobalScope
+@JSImport("log4javascript", JSImport.Namespace)
 private[logger] object Log4JavaScript extends js.Object {
-  val log4javascript:Log4JavaScript = js.native
+  val log4javascript: Log4JavaScript = js.native
+}
+
+@js.native
+@JSImport("mathjs", JSImport.Default)
+private[logger] object MathJS extends js.Object {
+  val mathjs: AnyVal = js.native
 }
 
 class L4JSLogger(jsLogger:JSLogger) extends Logger {
