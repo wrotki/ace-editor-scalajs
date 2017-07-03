@@ -41,8 +41,12 @@ object LoggerFactory {
   def getLogger(name: String): Logger = {
     val math = MathJS
     print(math)
-    // val someth = Log4JavaScript
-    val nativeLogger = Log4JavaScript.log4javascript.getLogger(name)
+    val gljs = GlobalLog4JavaScript
+    print(gljs)
+    val ljs = Log4JavaScript
+    print(ljs)
+    //val nativeLogger = Log4JavaScript.log4javascript.getLogger(name)
+    val nativeLogger = Log4JavaScript.getLogger(name)
     nativeLogger.addAppender(consoleAppender)
     new L4JSLogger(nativeLogger)
   }
@@ -51,7 +55,8 @@ object LoggerFactory {
    * Create a logger that outputs to a separate popup window
    */
   def getPopUpLogger(name: String): Logger = {
-    val nativeLogger = Log4JavaScript.log4javascript.getLogger(name)
+//    val nativeLogger = Log4JavaScript.log4javascript.getLogger(name)
+    val nativeLogger = Log4JavaScript.getLogger(name)
     nativeLogger.addAppender(popupAppender)
     new L4JSLogger(nativeLogger)
   }

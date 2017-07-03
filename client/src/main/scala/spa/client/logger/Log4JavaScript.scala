@@ -1,7 +1,7 @@
 package spa.client.logger
 
 import scala.scalajs.js
-import scala.scalajs.js.annotation.{JSImport}
+import scala.scalajs.js.annotation.{JSGlobalScope, JSImport}
 import scala.scalajs.js.annotation.JSImport.Namespace
 
 /**
@@ -59,7 +59,7 @@ private[logger] trait Appender extends js.Object {
   def setThreshold(level:Level):Unit = js.native
 }
 
-@JSImport("log4javascript", Namespace)
+@JSImport("log4javascript", "BrowserConsoleAppender")
 @js.native
 private[logger] class BrowserConsoleAppender extends Appender
 
@@ -73,12 +73,17 @@ private[logger] class AjaxAppender(url:String) extends Appender {
   def addHeader(header:String, value:String):Unit = js.native
 }
 
-//@js.annotation.JSGlobalScope
+@js.native
+@JSGlobalScope
+private[logger] object GlobalLog4JavaScript extends js.Object {
+  val log4javascript: Object = js.native
+}
 
 @js.native
-@JSImport("log4javascript", JSImport.Namespace)
+@JSImport("log4javascript", JSImport.Default)
 private[logger] object Log4JavaScript extends js.Object {
-  val log4javascript: Log4JavaScript = js.native
+  //val log4javascript: Log4JavaScript = js.native
+  def getLogger(name:js.UndefOr[String]):JSLogger = js.native
 }
 
 @js.native
