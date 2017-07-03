@@ -28,7 +28,7 @@ object Settings {
     val bootstrap = "3.3.7"
     val fontAwesome = "4.7.0"
     val scalajsScripts = "1.0.0"
-    val react = "15.5.4"
+    val react = "15.6.1"
     val log4javascript = "1.4.15"
     val mathjs = "3.13.3"
   }
@@ -51,6 +51,7 @@ object Settings {
 
   /** Dependencies only used by the JS project (note the use of %%% instead of %%) */
   val scalajsDependencies = Def.setting(Seq(
+    "com.github.japgolly.scalajs-react" %%% "core" % versions.scalaJSReact,
 //    "com.github.japgolly.scalajs-react" %%% "core" % versions.scalajsReact,
 //    "com.github.japgolly.scalajs-react" %%% "extra" % versions.scalajsReact,
 //    "com.github.japgolly.scalacss" %%% "ext-react" % versions.scalaCSS,
@@ -60,18 +61,19 @@ object Settings {
     "com.lihaoyi" %%% "utest" % versions.uTest % Test
   ))
 
+
   val jsDependencies = Def.setting(Seq(
 //    "org.webjars" % "font-awesome" % versions.fontAwesome % Provided,
 //    "org.webjars" % "bootstrap" % versions.bootstrap % Provided,
-    "com.github.japgolly.scalajs-react" %%% "core" % versions.scalaJSReact
+//    "org.webjars.bower" % "react" % versions.react / "react-with-addons.js" minified "react-with-addons.min.js" commonJSName "React",
+//    "org.webjars.bower" % "react" % versions.react / "react-dom.js" minified "react-dom.min.js" dependsOn "react-with-addons.js" commonJSName "ReactDOM"
   ))
 
   val npmDependencies = Seq(
-    "bootstrap" -> versions.bootstrap,
-    "font-awesome" -> versions.fontAwesome,
     "react" -> versions.react,
     "react-dom" -> versions.react,
     "log4javascript" -> versions.log4javascript,
-    "mathjs" -> versions.mathjs
+    "bootstrap" -> versions.bootstrap,
+    "font-awesome" -> versions.fontAwesome
   )
 }

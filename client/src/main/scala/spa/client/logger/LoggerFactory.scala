@@ -39,12 +39,6 @@ object LoggerFactory {
    * Create a logger that outputs to browser console
    */
   def getLogger(name: String): Logger = {
-    val math = MathJS
-    print(math)
-    val gljs = GlobalLog4JavaScript
-    print(gljs)
-    val ljs = Log4JavaScript
-    print(ljs)
     //val nativeLogger = Log4JavaScript.log4javascript.getLogger(name)
     val nativeLogger = Log4JavaScript.getLogger(name)
     nativeLogger.addAppender(consoleAppender)

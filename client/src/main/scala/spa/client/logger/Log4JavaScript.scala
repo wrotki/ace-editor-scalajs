@@ -74,22 +74,10 @@ private[logger] class AjaxAppender(url:String) extends Appender {
 }
 
 @js.native
-@JSGlobalScope
-private[logger] object GlobalLog4JavaScript extends js.Object {
-  val log4javascript: Object = js.native
-}
-
-@js.native
 @JSImport("log4javascript", JSImport.Default)
 private[logger] object Log4JavaScript extends js.Object {
   //val log4javascript: Log4JavaScript = js.native
   def getLogger(name:js.UndefOr[String]):JSLogger = js.native
-}
-
-@js.native
-@JSImport("mathjs", JSImport.Default)
-private[logger] object MathJS extends js.Object {
-  val mathjs: AnyVal = js.native
 }
 
 class L4JSLogger(jsLogger:JSLogger) extends Logger {

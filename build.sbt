@@ -10,7 +10,8 @@ version := "1.0"
 scalaVersion in ThisBuild := Settings.versions.scala // "2.12.1"
 
 val commonSettings = Seq(
-  libraryDependencies ++= Settings.sharedDependencies.value
+  libraryDependencies ++= Settings.sharedDependencies.value,
+  skip in packageJSDependencies := false
 )
 
 lazy val root = (project in file("."))
@@ -40,12 +41,13 @@ lazy val client = project
       version := Settings.version,
       scalaVersion := Settings.versions.scala,
       scalacOptions ++= Settings.scalacOptions,
-      libraryDependencies ++= Settings.jsDependencies.value,
+      libraryDependencies ++= Settings.scalajsDependencies.value,
+      jsDependencies ++= Settings.jsDependencies.value,
       useYarn := true,
       npmDependencies in Compile ++= Settings.npmDependencies,
       // Use a different Webpack configuration file for production
       webpackConfigFile in fastOptJS := Some(baseDirectory.value / "my.custom.webpack.config.js"),
-      enableReloadWorkflow := true
+      enableReloadWorkflow := false
   )
 
 lazy val server = (project in file("server"))
@@ -61,9 +63,8 @@ lazy val server = (project in file("server"))
   scalaJSProjects := Seq(client),
   pipelineStages in Assets := Seq(scalaJSPipeline),
   pipelineStages := Seq(digest, gzip),
-  npmAssets ++= NpmAssets.ofProject(client) { modules => (modules / "font-awesome").*** }.value,
   npmAssets ++= NpmAssets.ofProject(client) { modules => (modules / "bootstrap").*** }.value,
-  npmAssets ++= NpmAssets.ofProject(client) { modules => (modules / "log4javascript").*** }.value
+  npmAssets ++= NpmAssets.ofProject(client) { modules => (modules / "font-awesome" ).*** }.value
   // compress CSS
   // LessKeys.compress in Assets := true
 )

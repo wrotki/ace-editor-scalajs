@@ -1,10 +1,16 @@
 import scala.scalajs.js
-import scala.scalajs.js.annotation.JSExport
+import scala.scalajs.js.annotation.{JSExport, JSImport}
 import org.scalajs.dom
 import japgolly.scalajs.react._
+import japgolly.scalajs.react.raw.React
 import japgolly.scalajs.react.vdom.html_<^._
-
 import spa.client.logger._
+
+// Trick scalajsbundler into requiring react dependency
+// Otherwise japgolly's imports don't work
+@JSImport("react", JSImport.Default)
+@js.native
+object React extends React
 
 @JSExport("SPAMain")
 object SPAMain extends js.JSApp {
