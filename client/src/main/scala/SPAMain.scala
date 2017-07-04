@@ -34,13 +34,27 @@ object SPAMain extends js.JSApp {
         .render_P(name => <.div("Hello there ", name))
         .build
 
-    Hello("Donald")
+    Hello("Donald von Clownstick the Third")
       .renderIntoDOM(dom.document.getElementById("root"))
 
     NoArgs().renderIntoDOM(dom.document.getElementById("noargs"))
 
-    Ace.component(Ace.props(isOpened = true))()
-      .renderIntoDOM(dom.document.getElementById("editor"))
+    Ace.component(Ace.props(
+      mode = "javascript",
+      theme = "chrome",
+      name = "ace", // Unique id of <div>
+      width = "100%",
+      maxLines = 50,
+      //ref = "ace",
+      fontSize = 18,
+      value = "function main(){ console.log(\"Foo\"); }"
+      //    editorProps={{$blockScrolling: Infinity}}
+      //      onLoad={(editor) => {
+      //      editor.focus();
+      //      editor.getSession().setUseWrapMode(true);
+      //    }}
+    ))()
+      .renderIntoDOM(dom.document.getElementById("ace"))
   }
 }
 

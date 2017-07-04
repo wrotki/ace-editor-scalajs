@@ -14,7 +14,8 @@ import scala.scalajs.js.{undefined, UndefOr, Function0 => JFn0, Function1 => JFn
 
 object Ace {
 
-  @JSName("AceEditor")
+  //@JSName("ace")
+  @JSImport("react-ace", JSImport.Default)
   @js.native
   object RawComponent extends js.Object
 
@@ -29,18 +30,41 @@ object Ace {
 
   @js.native
   trait Props extends js.Object {
-    var isOpened: Boolean = js.native
-    var onMeasure: OnMeasure = js.native
-    var onRest: OnRest = js.native
+    var mode: String = js.native
+    var theme: String = js.native
+    var name: String = js.native
+    var width: String = js.native
+    var maxLines: Int = js.native
+    //var ref: String = js.native
+    var fontSize: Int = js.native
+    var value: String = js.native
+    //    var onMeasure: OnMeasure = js.native
+    //    var onRest: OnRest = js.native
   }
 
-  def props(isOpened: Boolean,
-            onMeasure: Measures => Callback = _ => Callback.empty,
-            onRest: Callback = Callback.empty): Props = {
+  def props(
+             mode: String,
+             name: String,
+             theme: String,
+             width: String,
+             maxLines: Int,
+             //ref: String,
+             fontSize: Int,
+             value: String
+             // onMeasure: Measures => Callback = _ => Callback.empty,
+             // onRest: Callback = Callback.empty
+           ): Props = {
     val p = (new js.Object).asInstanceOf[Props]
-    p.isOpened = isOpened
-    p.onMeasure = (measures: Measures) => onMeasure(measures).runNow()
-    p.onRest = onRest.toJsCallback // or alternatively: () => onRest.runNow()
+    p.mode = mode
+    p.name = name
+    p.theme = theme
+    p.width = width
+    p.maxLines = maxLines
+    //p.ref = ref
+    p.fontSize = fontSize
+    p.value = value
+    //    p.onMeasure = (measures: Measures) => onMeasure(measures).runNow()
+    //    p.onRest = onRest.toJsCallback // or alternatively: () => onRest.runNow()
     p
   }
 

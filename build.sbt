@@ -36,7 +36,10 @@ lazy val client = project
     .enablePlugins(ScalaJSBundlerPlugin, ScalaJSWeb)
     .settings(commonSettings: _*)
     .settings(
-      scalaJSModuleKind := ModuleKind.CommonJSModule,
+      scalaJSLinkerConfig ~= { _.withModuleKind(ModuleKind.CommonJSModule) },
+      //scalaJSLinkerConfig ~= { _.withRelativizeSourceMapBase(None) },
+      scalaJSLinkerConfig ~= { _.withSourceMap(false) },
+      //scalaJSModuleKind := ModuleKind.CommonJSModule,
       name := "client",
       version := Settings.version,
       scalaVersion := Settings.versions.scala,

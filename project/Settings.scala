@@ -17,7 +17,7 @@ object Settings {
   )
 
   object versions {
-    //val scala = "2.12.1"
+    // val scala = "2.12.1"
     val scala = "2.11.11"
     val autowire = "0.2.5"
     val booPickle = "1.2.5"

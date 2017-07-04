@@ -15,7 +15,7 @@ addSbtPlugin("com.typesafe.sbt" % "sbt-gzip" % "1.0.0")
 // https://index.scala-lang.org/vmunier/sbt-web-scalajs
 // addSbtPlugin("com.vmunier" % "sbt-web-scalajs" % "1.0.4")
 
-addSbtPlugin("org.scala-js" % "sbt-scalajs" % "0.6.17")
+addSbtPlugin("org.scala-js" % "sbt-scalajs" % "0.6.18")
 
 //addSbtPlugin("com.typesafe.sbt" % "sbt-less" % "1.0.6")
 
