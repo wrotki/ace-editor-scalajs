@@ -4,13 +4,14 @@ import org.scalajs.dom
 import japgolly.scalajs.react._
 import japgolly.scalajs.react.raw.React
 import japgolly.scalajs.react.vdom.html_<^._
+import spa.client.ace.Ace
 import spa.client.logger._
 
 // Trick scalajsbundler into requiring react dependency
 // Otherwise japgolly's imports don't work
-@JSImport("react", JSImport.Default)
-@js.native
-object React extends React
+//@JSImport("react", JSImport.Default)
+//@js.native
+//object React extends React
 
 @JSExport("SPAMain")
 object SPAMain extends js.JSApp {
@@ -33,11 +34,13 @@ object SPAMain extends js.JSApp {
         .render_P(name => <.div("Hello there ", name))
         .build
 
-    // Usage
-//    val body = ScalaComponent.static("Body")(<.div(
-//      NoArgs(),
-//      Hello("John"),
-//      Hello("Jane")))
-    Hello("You").renderIntoDOM(dom.document.body)
+    Hello("Donald")
+      .renderIntoDOM(dom.document.getElementById("root"))
+
+    NoArgs().renderIntoDOM(dom.document.getElementById("noargs"))
+
+    Ace.component(Ace.props(isOpened = true))()
+      .renderIntoDOM(dom.document.getElementById("editor"))
   }
 }
+
