@@ -32,7 +32,7 @@ lazy val sharedJVM = shared.jvm.settings(name := "sharedJVM")
 lazy val sharedJS = shared.js.settings(name := "sharedJS")
 
 // lazy val client = project.enablePlugins(ScalaJSPlugin, ScalaJSWeb, ScalaJSBundlerPlugin)
-lazy val client = project
+lazy val client = (project in file("client"))
     .enablePlugins(ScalaJSBundlerPlugin, ScalaJSWeb)
     .settings(commonSettings: _*)
     .settings(

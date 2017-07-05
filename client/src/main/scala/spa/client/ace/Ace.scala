@@ -2,11 +2,9 @@ package spa.client.ace
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.{JSExport, JSImport, JSName}
+import scala.scalajs.js.{UndefOr, Function0 => JFn0, Function1 => JFn1}
+
 import japgolly.scalajs.react._
-
-import scala.scalajs.js.UndefOr
-import scala.scalajs.js.{undefined, UndefOr, Function0 => JFn0, Function1 => JFn1}
-
 
 // ACE
 // http://zhouanbo.com/2016/06/10/Using-Ace-Editor-With-React/
@@ -14,7 +12,6 @@ import scala.scalajs.js.{undefined, UndefOr, Function0 => JFn0, Function1 => JFn
 
 object Ace {
 
-  //@JSName("ace")
   @JSImport("react-ace", JSImport.Default)
   @js.native
   object RawComponent extends js.Object
